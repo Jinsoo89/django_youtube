@@ -1,0 +1,24 @@
+{% block content %}
+<div class="search">
+    <form action="" method="POST"> {% csrf_token %}
+        {{ form }}
+        <!--<input type="text" id="keyword" name="keyword" required />-->
+        <button type="submit" value="keyword">검색!</button>
+    </form>
+</div>
+<div class="results">
+    <form action="" method="GET">
+        {% for video in videos %}
+            <a href="https://www.youtube.com/watch?v={{ video.youtube_id }}" target="_blank">
+                <h2>{{ video.title }}</h2>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/{{ video.youtube_id }}">
+                </iframe>
+            </a>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}
+
+
+
+
