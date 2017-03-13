@@ -6,19 +6,19 @@
 5. View 와 Template연결
 6. 실행해보기
 """
-
+from django.conf import settings
 from django.db import models
-
-# class VideoManager(models.Manager):
-#     def
 
 
 class Video(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=300)
-    # url = models.URLField()
-    youtube_id = models.CharField(max_length=100)
-    published_date = models.DateTimeField(auto_now_add=False)
+    title = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    youtube_id = models.CharField(unique=True, max_length=100)
+    url_thumbnail = models.URLField(max_length=300, blank=True)
+    published_date = models.DateTimeField()
 
     def __str__(self):
-        return 'the title of this video is {}'.format(self.title)
+        return self.title
+
+
+
